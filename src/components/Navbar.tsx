@@ -12,9 +12,9 @@ const MyNavbar: React.FC = () => {
   return (
     // @ts-ignore
     <Navbar
-      color="blue-gray"
+      color="transparent"
       shadow={true}
-      className="navbar mx-auto max-w-full py-2 px-4 lg:px-8 lg:py-4 rounded-none min-h-12 items-center "
+      className="navbar mx-auto max-w-full py-2 px-4 lg:px-8 lg:py-4 rounded-none min-h-12 items-center"
     >
       <div className="container mx-auto flex justify-between items-center">
         {/* @ts-ignore */}
@@ -22,30 +22,35 @@ const MyNavbar: React.FC = () => {
           as="a"
           href="#"
           variant="h6"
-          className="mr-4 cursor-pointer py-1.5 font-medium text-white"
+          className="mr-4 cursor-pointer py-1.5 font-medium text-white flex items-center"
         >
-          MyNavbar
+          <img
+            src="./logo.png"
+            alt="logo"
+            className="rounded-full w-10 h-10 mr-2"
+          />
+          Infinity Market
         </Typography>
         <div className="hidden lg:block">
           <ul className="flex space-x-4">
             <li>
               <a href="#home" className="text-white">
-                Home
+                Shop
               </a>
             </li>
             <li>
               <a href="#about" className="text-white">
-                About
+                Home
               </a>
             </li>
             <li>
               <a href="#services" className="text-white">
-                Services
+                <img className="w-6 h-6" src="./cart.png" alt="shopping cart" />
               </a>
             </li>
             <li>
               <a href="#contact" className="text-white">
-                Contact
+                Log in
               </a>
             </li>
           </ul>
@@ -94,22 +99,22 @@ const MyNavbar: React.FC = () => {
         <ul className="flex flex-col space-y-4">
           <li>
             <a href="#home" className="text-white">
-              Home
+              Shop
             </a>
           </li>
           <li>
             <a href="#about" className="text-white">
-              About
+              Home
             </a>
           </li>
           <li>
             <a href="#services" className="text-white">
-              Services
+              <img className="w-6 h-6" src="./cart.png" alt="shopping cart" />
             </a>
           </li>
           <li>
             <a href="#contact" className="text-white">
-              Contact
+              Log in
             </a>
           </li>
         </ul>
