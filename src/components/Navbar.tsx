@@ -6,6 +6,7 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import "./Navbar.css";
+import Cart from "./Cart";
 
 const MyNavbar: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -56,6 +57,9 @@ const MyNavbar: React.FC = () => {
                 className="text-white no-underline hover:underline"
               >
                 <img className="w-6 h-6" src="./cart.png" alt="shopping cart" />
+                <span className="bg-red-500 text-white rounded-full w-4 h-4 absolute -mt-8 ml-4 flex items-center justify-center">
+                  2
+                </span>
               </a>
             </li>
           </ul>
@@ -129,6 +133,7 @@ const MyNavbar: React.FC = () => {
           </li>
         </ul>
       </Collapse>
+      {/* <Cart /> */}
     </Navbar>
   );
 };
