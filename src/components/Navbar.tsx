@@ -5,6 +5,7 @@ import {
   Typography,
   IconButton,
 } from "@material-tailwind/react";
+import "./Navbar.css";
 
 const MyNavbar: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -12,9 +13,9 @@ const MyNavbar: React.FC = () => {
   return (
     // @ts-ignore
     <Navbar
-      color="transparent"
+      color="blue-gray"
       shadow={true}
-      className="navbar mx-auto max-w-full py-2 px-4 lg:px-8 lg:py-4 rounded-none min-h-12 items-center"
+      className="navbar mx-auto max-w-full py-2 px-4 lg:px-8 lg:py-4 rounded-none min-h-12 items-center lg:shadow-lg lg:bg-gray-800 lg:bg-opacity-25"
     >
       <div className="container mx-auto flex justify-between items-center">
         {/* @ts-ignore */}
@@ -29,28 +30,32 @@ const MyNavbar: React.FC = () => {
             alt="logo"
             className="rounded-full w-10 h-10 mr-2"
           />
-          Infinity Market
+          <p className="underline">Infinity Market</p>
         </Typography>
         <div className="hidden lg:block">
-          <ul className="flex space-x-4">
+          <ul className="flex space-x-4 desktop-list">
             <li>
-              <a href="#home" className="text-white">
+              <a
+                href="#home"
+                className="text-white no-underline hover:underline"
+              >
                 Shop
               </a>
             </li>
             <li>
-              <a href="#about" className="text-white">
+              <a
+                href="#about"
+                className="text-white no-underline hover:underline"
+              >
                 Home
               </a>
             </li>
             <li>
-              <a href="#services" className="text-white">
+              <a
+                href="#services"
+                className="text-white no-underline hover:underline"
+              >
                 <img className="w-6 h-6" src="./cart.png" alt="shopping cart" />
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="text-white">
-                Log in
               </a>
             </li>
           </ul>
@@ -98,23 +103,28 @@ const MyNavbar: React.FC = () => {
       <Collapse open={openNav} className="lg:hidden">
         <ul className="flex flex-col space-y-4">
           <li>
-            <a href="#home" className="text-white">
+            <a
+              href="#home"
+              className="text-white hover:bg-blue-gray-300 hover:p-1 hover:rounded-md"
+            >
               Shop
             </a>
           </li>
           <li>
-            <a href="#about" className="text-white">
+            <a
+              href="#about"
+              className="text-white hover:bg-blue-gray-300 hover:p-1 hover:rounded-md"
+            >
               Home
             </a>
           </li>
           <li>
             <a href="#services" className="text-white">
-              <img className="w-6 h-6" src="./cart.png" alt="shopping cart" />
-            </a>
-          </li>
-          <li>
-            <a href="#contact" className="text-white">
-              Log in
+              <img
+                className="w-6 h-6 hover:bg-blue-gray-300 hover:p-1 hover:rounded-md"
+                src="./cart.png"
+                alt="shopping cart"
+              />
             </a>
           </li>
         </ul>
