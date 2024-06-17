@@ -1,11 +1,11 @@
-export default function Cart() {
+export default function Cart({ openCart, setOpenCart }) {
   return (
     <div
-      className={`cart-container fixed top-0 right-0 h-full w-full sm:w-1/3 bg-white shadow-md   duration-700 ease-in-out z-50`}
+      className={`cart-container fixed top-0 right-0 h-full w-full sm:w-1/3 duration-700 ease-in-out z-50 shadow-2xl bg-brown-100`}
     >
       <div className="flex justify-between items-center p-4 border-b">
         <h1 className="text-lg font-bold">Shopping Cart</h1>
-        <button>
+        <button onClick={() => setOpenCart(!openCart)}>
           <span className="text-4xl">&times;</span>
         </button>
       </div>
