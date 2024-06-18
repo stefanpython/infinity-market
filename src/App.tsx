@@ -1,6 +1,7 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import { CarouselDefault } from "./components/Carousel";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -8,9 +9,12 @@ function App() {
       <div className="z-50 relative">
         <Navbar />
       </div>
+
       <div className="-mt-[84px]">
         <CarouselDefault />
       </div>
+
+      <Footer />
     </div>
   );
 }
