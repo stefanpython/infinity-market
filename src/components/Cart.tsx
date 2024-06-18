@@ -1,4 +1,11 @@
-export default function Cart({ openCart, setOpenCart }) {
+import React from "react";
+export default function Cart({
+  openCart,
+  setOpenCart,
+}: {
+  openCart: boolean;
+  setOpenCart: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <div
       className={`cart-container fixed top-0 right-0 h-full w-full sm:w-1/3 duration-700 ease-in-out z-50 shadow-2xl bg-brown-100 rounded-xl ${
