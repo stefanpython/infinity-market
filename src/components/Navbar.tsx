@@ -129,13 +129,16 @@ const MyNavbar: React.FC = () => {
               </a>
             </li>
             <li>
-              <a href="#services" className="text-white">
+              <button
+                onClick={() => setOpenCart(!openCart)}
+                className="text-white"
+              >
                 <img
                   className="w-6 h-6 hover:bg-blue-gray-300 hover:p-1 hover:rounded-md"
                   src="./cart.png"
                   alt="shopping cart"
                 />
-              </a>
+              </button>
             </li>
           </ul>
         </Collapse>
