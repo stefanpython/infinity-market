@@ -56,7 +56,7 @@ const MyNavbar: React.FC = () => {
               <li>
                 <button
                   onClick={() => setOpenCart(!openCart)}
-                  className="text-white no-underline hover:underline"
+                  className="text-white no-underline hover:underline relative"
                 >
                   <img
                     className="w-6 h-6"
@@ -131,14 +131,19 @@ const MyNavbar: React.FC = () => {
             <li>
               <button
                 onClick={() => setOpenCart(!openCart)}
-                className="text-white"
+                className="text-white relative"
               >
                 <img
                   className="w-6 h-6 hover:bg-blue-gray-300 hover:p-1 hover:rounded-md"
                   src="./cart.png"
                   alt="shopping cart"
                 />
-                <span className="bg-red-500 text-white rounded-full w-4 h-4 absolute -mt-8 ml-4 flex items-center justify-center">
+                <span
+                  className={`bg-red-500 text-white rounded-full w-4 h-4 absolute flex items-center justify-center transition-opacity duration-300 ${
+                    openNav ? "opacity-100" : "opacity-0"
+                  }`}
+                  style={{ top: "-0.5rem", right: "-1rem" }}
+                >
                   3
                 </span>
               </button>
