@@ -1,7 +1,9 @@
 export default function Cart({ openCart, setOpenCart }) {
   return (
     <div
-      className={`cart-container fixed top-0 right-0 h-full w-full sm:w-1/3 duration-700 ease-in-out z-50 shadow-2xl bg-brown-100 rounded-xl`}
+      className={`cart-container fixed top-0 right-0 h-full w-full sm:w-1/3 duration-700 ease-in-out z-50 shadow-2xl bg-brown-100 rounded-xl ${
+        openCart ? "translate-x-0" : "translate-x-full"
+      }`}
     >
       <div className="flex justify-between items-center p-4 border-b">
         <h1 className="text-lg font-bold">Shopping Cart</h1>

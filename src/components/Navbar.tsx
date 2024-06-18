@@ -138,12 +138,15 @@ const MyNavbar: React.FC = () => {
                   src="./cart.png"
                   alt="shopping cart"
                 />
+                <span className="bg-red-500 text-white rounded-full w-4 h-4 absolute -mt-8 ml-4 flex items-center justify-center">
+                  3
+                </span>
               </button>
             </li>
           </ul>
         </Collapse>
       </Navbar>
-      {openCart && <Cart openCart={openCart} setOpenCart={setOpenCart} />}
+      <Cart openCart={openCart} setOpenCart={setOpenCart} />
     </>
   );
 };
