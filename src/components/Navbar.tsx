@@ -7,6 +7,7 @@ import {
 } from "@material-tailwind/react";
 import "./Navbar.css";
 import Cart from "./Cart";
+import { Link } from "react-router-dom";
 
 const MyNavbar: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -38,20 +39,20 @@ const MyNavbar: React.FC = () => {
           <div className="hidden lg:block">
             <ul className="flex space-x-4 desktop-list">
               <li>
-                <a
-                  href="#home"
+                <Link
+                  to="/shop"
                   className="text-white no-underline hover:underline"
                 >
                   Shop
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#about"
+                <Link
+                  to="/"
                   className="text-white no-underline hover:underline"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
                 <button
@@ -114,7 +115,7 @@ const MyNavbar: React.FC = () => {
           <ul className="flex flex-col space-y-4">
             <li>
               <a
-                href="#home"
+                href="/shop"
                 className="text-white hover:bg-blue-gray-300 hover:p-1 hover:rounded-md"
               >
                 Shop
