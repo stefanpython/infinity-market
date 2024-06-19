@@ -6,13 +6,9 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <div>
-      <div className="z-50 relative">
-        <Navbar />
-      </div>
+      <Navbar />
 
-      <div className="-mt-[84px]">
-        <CarouselDefault />
-      </div>
+      <CarouselDefault />
 
       <Footer />
     </div>
