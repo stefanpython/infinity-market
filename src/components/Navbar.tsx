@@ -19,7 +19,7 @@ const MyNavbar: React.FC = () => {
       <Navbar
         color="blue-gray"
         shadow={true}
-        className="z-50 relative navbar mx-auto max-w-full py-2 px-4 lg:px-8 lg:py-4 rounded-none min-h-12 items-center lg:shadow-lg lg:bg-gray-800 lg:bg-opacity-25"
+        className="z-50 relative navbar mx-auto max-w-full py-2 px-4 lg:px-8 lg:py-4 rounded-none min-h-12 items-center lg:shadow-lg lg:bg-black lg:bg-opacity-25"
       >
         <div className="container mx-auto flex justify-between items-center">
           {/* @ts-ignore */}
@@ -123,7 +123,7 @@ const MyNavbar: React.FC = () => {
             </li>
             <li>
               <a
-                href="#about"
+                href="/"
                 className="text-white hover:bg-blue-gray-300 hover:p-1 hover:rounded-md"
               >
                 Home
