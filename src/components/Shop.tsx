@@ -1,4 +1,5 @@
 import "./Shop.css";
+import { Link } from "react-router-dom";
 
 export default function Shop() {
   const products = [
@@ -30,8 +31,9 @@ export default function Shop() {
     <div className="h-[100vh] lg:pl-60 lg:pr-60 md:p-0">
       <div className="card-container grid lg:grid-cols-4 md:grid-cols-2 gap-4 mt-10 ">
         {products.map((product) => (
-          <div
+          <Link
             key={product.description}
+            to={`/product/${product.description}`}
             className="bg-white rounded-lg shadow-md p-4 min-w-40"
           >
             <div className="flex items-center justify-center">
@@ -50,7 +52,7 @@ export default function Shop() {
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex w-full justify-center">
               Add to Cart
             </button>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
