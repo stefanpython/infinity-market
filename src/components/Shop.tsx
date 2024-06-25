@@ -1,6 +1,7 @@
 import "./Shop.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Pagination from "react-js-pagination";
 
 interface Product {
   category: string;
@@ -17,6 +18,17 @@ interface Product {
 
 export default function Shop() {
   const [products, setProducts] = useState<Product[]>([]);
+
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(12);
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
   // Get products list
   const getProductsList = async () => {
@@ -39,14 +51,18 @@ export default function Shop() {
     getProductsList();
   }, []);
 
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <div className=" lg:pl-60 lg:pr-60 md:p-0">
       <div className="card-container grid lg:grid-cols-4 md:grid-cols-2 gap-4 mt-10 ">
-        {products.map((product) => (
+        {currentProducts.map((product) => (
           <Link
             key={product.id}
             to={`/product/${product.id}`}
-            className="bg-white rounded-lg shadow-md p-4 min-w-40"
+            className="bg-white rounded-lg shadow-lg p-4 min-w-40 flex flex-col justify-between"
           >
             <div className="flex items-center justify-center">
               <img
@@ -57,15 +73,34 @@ export default function Shop() {
             </div>
 
             <p className="text-gray-700 text-base">{product.title}</p>
+            <p className="text-gray-700 text-base line-clamp-2">
+              {product.description.slice(0, 10)}...
+            </p>
+
             <p className="text-gray-700 text-lg font-bold mb-2">
               ${product.price}
             </p>
 
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex w-full justify-center">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
               Add to Cart
             </button>
           </Link>
         ))}
+      </div>
+
+      <div className="flex justify-center mt-10 mb-2">
+        <Pagination
+          activePage={currentPage}
+          itemsCountPerPage={productsPerPage}
+          totalItemsCount={products.length}
+          pageRangeDisplayed={5}
+          onChange={handlePageChange}
+          itemClass="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring ring-gray-500 focus:border-gray-500 active:bg-gray-100"
+          linkClass="relative inline-flex items-center px-2 py-2 border text-sm font-medium bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring ring-gray-500 focus:border-gray-500"
+          activeLinkClass="z-10 bg-gray-500 text-black border-gray-500"
+          prevPageText="Prev"
+          nextPageText="Next"
+        />
       </div>
     </div>
   );
