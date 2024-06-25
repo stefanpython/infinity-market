@@ -114,20 +114,20 @@ const MyNavbar: React.FC = () => {
         <Collapse open={openNav} className="lg:hidden">
           <ul className="flex flex-col space-y-4">
             <li>
-              <a
-                href="/shop"
+              <Link
+                to="/shop"
                 className="text-white hover:bg-blue-gray-300 hover:p-1 hover:rounded-md"
               >
                 Shop
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/"
+              <Link
+                to="/"
                 className="text-white hover:bg-blue-gray-300 hover:p-1 hover:rounded-md"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
               <button
