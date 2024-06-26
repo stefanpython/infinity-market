@@ -1,11 +1,34 @@
-import React from "react";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const ProductDetails = () => {
   const { productId } = useParams<{ productId: string }>();
+  const [productDetails, setProductDetails] = useState({});
 
-  // Fetch product details based on productId and display them
-  // You can fetch product details from an API or a local data source
+  // Get details for a product based on id
+  const getProductDetails = async () => {
+    try {
+      const response = await fetch(
+        `https://fakestoreapi.com/products/${productId}`
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+
+      const itemData = await response.json();
+      setProductDetails(itemData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getProductDetails();
+  }, [productId]);
+
+  console.log(productDetails);
 
   return (
     <div className="flex w-full h-[100vh] mx-auto justify-center">

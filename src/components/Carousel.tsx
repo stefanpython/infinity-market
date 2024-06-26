@@ -3,6 +3,7 @@ import { Carousel, Typography } from "@material-tailwind/react";
 export function CarouselDefault() {
   return (
     // @ts-ignore
+    // autoplay infinite loop
     <Carousel className="h-[100vh] -mt-[84px]">
       <div className="relative h-full w-full ">
         <img
