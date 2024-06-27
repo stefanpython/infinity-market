@@ -81,7 +81,7 @@ export default function Shop() {
               ${product.price}
             </p>
 
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:scale-105 duration-300">
               Add to Cart
             </button>
           </Link>

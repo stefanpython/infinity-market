@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 interface Product {
@@ -17,6 +17,7 @@ interface Product {
 const ProductDetails = () => {
   const { productId } = useParams<{ productId: string }>();
   const [productDetails, setProductDetails] = useState<Product | null>(null);
+  const navigate = useNavigate();
 
   // Get details for a product based on id
   const getProductDetails = async () => {
@@ -41,8 +42,6 @@ const ProductDetails = () => {
     getProductDetails();
   }, [productId]);
 
-  console.log(productDetails);
-
   return (
     <div className="flex w-full min-h-[100vh] mx-auto justify-center items-center">
       <div className="flex flex-col md:flex-row w-full h-full justify-center items-center">
@@ -54,16 +53,24 @@ const ProductDetails = () => {
           />
         </div>
         <div className="w-full md:w-1/2 flex flex-col p-4">
-          <h2 className="text-2xl font-bold mb-2">{productDetails?.title}</h2>
+          <div className="flex justify-between">
+            <h2 className="text-2xl font-bold mb-2">{productDetails?.title}</h2>
+            <button
+              className="text-purple-600 bg-purple-100 border-2 border-purple-600 hover:bg-purple-500 hover:text-white text-sm font-medium px-4 rounded-md focus:outline-none"
+              onClick={() => navigate(-1)}
+            >
+              &lt; Back
+            </button>
+          </div>
           <div className="flex flex-col">
             <p className="text-gray-700">{productDetails?.description}</p>
           </div>
           <div className="flex flex-col mt-4">
             <p className="font-semibold">Price:</p>
-            <p className="text-gray-900">{productDetails?.price}</p>
+            <p className="text-gray-900">$ {productDetails?.price}</p>
           </div>
           <div className="mt-4">
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:scale-105 duration-300">
               Add to Cart
             </button>
           </div>
