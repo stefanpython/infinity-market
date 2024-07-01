@@ -1,11 +1,15 @@
+// Cart.tsx
 import React from "react";
-export default function Cart({
-  openCart,
-  setOpenCart,
-}: {
+import { useCart } from "./CartContext";
+
+interface CartProps {
   openCart: boolean;
   setOpenCart: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+}
+
+const Cart: React.FC<CartProps> = ({ openCart, setOpenCart }) => {
+  const { cartItems, total } = useCart();
+
   return (
     <div
       className={`cart-container fixed top-0 right-0 h-full w-full sm:w-1/3 duration-700 ease-in-out z-50 shadow-2xl bg-brown-100 rounded-xl ${
@@ -20,49 +24,41 @@ export default function Cart({
       </div>
 
       <div className="p-4 overflow-y-auto max-h-[750px]">
-        {/* {cartItems &&
-      cartItems.map((item) => (
-        <div key={item._id} className="flex flex-col mb-2">
-          <div className="flex items-center mb-2 justify-between">
-            <div className="flex items-center">
-              <img
-                src={`https://ecom-express-backend-production.up.railway.app/images/${item.product.image}`}
-                alt=""
-                className="w-10 h-10 mr-2"
-              />
-              <p>{item.product.name}</p>
-            </div>
+        {cartItems.length > 0 ? (
+          cartItems.map((item) => (
+            <div key={item.product.id} className="flex flex-col mb-2">
+              <div className="flex items-center mb-2 justify-between">
+                <div className="flex items-center">
+                  <img
+                    src={item.product.image}
+                    alt={item.product.title}
+                    className="w-10 h-10 mr-2"
+                  />
+                  <p>{item.product.title}</p>
+                </div>
+              </div>
 
-            <button
-             
-              data-testid="remove-button"
-            >
-              <img className="w-6 h-6" src="./bin.png" alt="recycle-bin" />
-            </button>
-          </div>
-
-          <div className="flex flex-col">
-            <div className="flex mr-4 justify-between">
-              <p className="mr-2">Quantity:</p>
-              <p>{item.quantity}</p>
+              <div className="flex flex-col justify-between">
+                <div className="flex justify-between">
+                  <span>Quantity: {item.quantity}</span>
+                  <span>${item.product.price * item.quantity}</span>
+                </div>
+              </div>
             </div>
-
-            <div className="flex justify-between">
-              <p className="mr-2">Price:</p>
-              <p>$12</p>
-            </div>
-          </div>
-          <hr />
-        </div>
-      ))} */}
+          ))
+        ) : (
+          <p>Your cart is empty</p>
+        )}
       </div>
 
-      <div className="flex justify-between items-center p-4 border-t">
-        <p>Total:</p>
-        <p>$ dollars</p>
+      <div className="p-4 border-t">
+        <h2 className="text-lg font-bold">Total: ${total.toFixed(2)}</h2>
+        <button className="w-full py-2 mt-2 bg-blue-500 text-white rounded-lg">
+          Checkout
+        </button>
       </div>
-
-      <div className="p-4">items</div>
     </div>
   );
-}
+};
+
+export default Cart;

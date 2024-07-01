@@ -2,6 +2,7 @@ import "./Shop.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Pagination from "react-js-pagination";
+import { useCart } from "./CartContext";
 
 interface Product {
   category: string;
@@ -18,6 +19,7 @@ interface Product {
 
 export default function Shop() {
   const [products, setProducts] = useState<Product[]>([]);
+  const { addToCart } = useCart(); // Destructure addToCart from useCart
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -56,35 +58,39 @@ export default function Shop() {
   };
 
   return (
-    <div className=" lg:pl-60 lg:pr-60 md:p-0">
+    <div className="lg:pl-60 lg:pr-60 md:p-0">
       <div className="card-container grid lg:grid-cols-4 md:grid-cols-2 gap-4 mt-10 ">
         {currentProducts.map((product) => (
-          <Link
+          <div
             key={product.id}
-            to={`/product/${product.id}`}
             className="bg-white rounded-lg shadow-lg p-4 min-w-40 flex flex-col justify-between"
           >
-            <div className="flex items-center justify-center">
-              <img
-                src={product.image}
-                alt={product.title}
-                className="w-60 h-60 object-cover mb-4"
-              />
-            </div>
-
-            <p className="text-gray-700 text-base">{product.title}</p>
-            <p className="text-gray-700 text-base line-clamp-2">
-              {product.description.slice(0, 10)}...
-            </p>
-
-            <p className="text-gray-700 text-lg font-bold mb-2">
-              ${product.price}
-            </p>
-
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:scale-105 duration-300">
+            <Link
+              to={`/product/${product.id}`}
+              className="flex flex-col items-center"
+            >
+              <div className="flex items-center justify-center">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-60 h-60 object-cover mb-4"
+                />
+              </div>
+              <p className="text-gray-700 text-base">{product.title}</p>
+              <p className="text-gray-700 text-base line-clamp-2">
+                {product.description.slice(0, 10)}...
+              </p>
+              <p className="text-gray-700 text-lg font-bold mb-2">
+                ${product.price}
+              </p>
+            </Link>
+            <button
+              onClick={() => addToCart(product)}
+              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:scale-105 duration-300"
+            >
               Add to Cart
             </button>
-          </Link>
+          </div>
         ))}
       </div>
 

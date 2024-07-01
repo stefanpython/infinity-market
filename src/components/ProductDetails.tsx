@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useCart } from "./CartContext";
 
 interface Product {
   category: string;
@@ -18,6 +19,8 @@ const ProductDetails = () => {
   const { productId } = useParams<{ productId: string }>();
   const [productDetails, setProductDetails] = useState<Product | null>(null);
   const navigate = useNavigate();
+
+  const { addToCart } = useCart();
 
   // Get details for a product based on id
   const getProductDetails = async () => {
@@ -70,7 +73,12 @@ const ProductDetails = () => {
             <p className="text-gray-900">$ {productDetails?.price}</p>
           </div>
           <div className="mt-4">
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:scale-105 duration-300">
+            <button
+              onClick={
+                productDetails ? () => addToCart(productDetails) : undefined
+              }
+              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:scale-105 duration-300"
+            >
               Add to Cart
             </button>
           </div>

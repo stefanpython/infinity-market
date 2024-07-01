@@ -1,3 +1,4 @@
+// Navbar.tsx
 import React, { useState } from "react";
 import {
   Navbar,
@@ -8,10 +9,11 @@ import {
 import "./Navbar.css";
 import Cart from "./Cart";
 import { Link } from "react-router-dom";
+import { useCart } from "./CartContext";
 
 const MyNavbar: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
-  const [openCart, setOpenCart] = useState(false);
+  const { openCart, setOpenCart, cartItems } = useCart(); // Use useCart
 
   return (
     <>
@@ -65,7 +67,7 @@ const MyNavbar: React.FC = () => {
                     alt="shopping cart"
                   />
                   <span className="bg-red-500 text-white rounded-full w-4 h-4 absolute -mt-8 ml-5 flex items-center justify-center">
-                    3
+                    {cartItems.length}
                   </span>
                 </button>
               </li>
@@ -145,7 +147,7 @@ const MyNavbar: React.FC = () => {
                   }`}
                   style={{ top: "-0.5rem", right: "-1rem" }}
                 >
-                  3
+                  {cartItems.length}
                 </span>
               </button>
             </li>
