@@ -8,7 +8,7 @@ interface CartProps {
 }
 
 const Cart: React.FC<CartProps> = ({ openCart, setOpenCart }) => {
-  const { cartItems, total } = useCart();
+  const { cartItems, removeFromCart } = useCart();
 
   return (
     <div
@@ -27,7 +27,7 @@ const Cart: React.FC<CartProps> = ({ openCart, setOpenCart }) => {
         {cartItems.length > 0 ? (
           cartItems.map((item) => (
             <div key={item.product.id} className="flex flex-col mb-2">
-              <div className="flex items-center mb-2 justify-between">
+              <div className="flex items-center justify-between p-2">
                 <div className="flex items-center">
                   <img
                     src={item.product.image}
@@ -36,6 +36,12 @@ const Cart: React.FC<CartProps> = ({ openCart, setOpenCart }) => {
                   />
                   <p>{item.product.title}</p>
                 </div>
+                <button
+                  onClick={() => removeFromCart(item.product.id)}
+                  className="text-2xl"
+                >
+                  &times;
+                </button>
               </div>
 
               <div className="flex flex-col justify-between">
@@ -52,7 +58,15 @@ const Cart: React.FC<CartProps> = ({ openCart, setOpenCart }) => {
       </div>
 
       <div className="p-4 border-t">
-        <h2 className="text-lg font-bold">Total: ${total.toFixed(2)}</h2>
+        <h2 className="text-lg font-bold">
+          Total: $
+          {cartItems
+            .reduce(
+              (total, item) => total + item.quantity * item.product.price,
+              0
+            )
+            .toFixed(2)}
+        </h2>
         <button className="w-full py-2 mt-2 bg-blue-500 text-white rounded-lg">
           Checkout
         </button>

@@ -23,6 +23,7 @@ interface CartItem {
 interface CartContextType {
   cartItems: CartItem[];
   addToCart: (product: Product) => void;
+  removeFromCart: (productId: number) => void;
   openCart: boolean;
   setOpenCart: React.Dispatch<React.SetStateAction<boolean>>;
   total: number;
@@ -66,6 +67,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setOpenCart(true);
   };
 
+  const removeFromCart = (productId: number) => {
+    setCartItems((prevItems) =>
+      prevItems.filter((item) => item.product.id !== productId)
+    );
+  };
+
   const total = cartItems.reduce(
     (acc, item) => acc + item.product.price * item.quantity,
     0
@@ -73,7 +80,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, openCart, setOpenCart, total }}
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        openCart,
+        setOpenCart,
+        total,
+      }}
     >
       {children}
     </CartContext.Provider>
