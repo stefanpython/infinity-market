@@ -12,30 +12,30 @@ const Footer: React.FC = () => {
           </p>
         </div>
         <div className="flex flex-wrap justify-center space-x-4 sm:justify-end">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="text-gray-600 hover:text-gray-800 text-sm font-medium"
           >
             Home
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/shop"
             className="text-gray-600 hover:text-gray-800 text-sm font-medium"
           >
             Shop
-          </a>
+          </Link>
           <Link
             to="/about"
             className="text-gray-600 hover:text-gray-800 text-sm font-medium"
           >
             About
           </Link>
-          <a
-            href="#"
+          <Link
+            to="/contact"
             className="text-gray-600 hover:text-gray-800 text-sm font-medium"
           >
             Contact
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
