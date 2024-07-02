@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   return (
@@ -23,12 +24,12 @@ const Footer: React.FC = () => {
           >
             Shop
           </a>
-          <a
-            href="#"
+          <Link
+            to="/about"
             className="text-gray-600 hover:text-gray-800 text-sm font-medium"
           >
             About
-          </a>
+          </Link>
           <a
             href="#"
             className="text-gray-600 hover:text-gray-800 text-sm font-medium"

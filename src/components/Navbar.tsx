@@ -42,20 +42,22 @@ const MyNavbar: React.FC = () => {
             <ul className="flex space-x-4 desktop-list">
               <li>
                 <Link
-                  to="/shop"
-                  className="text-white no-underline hover:underline"
-                >
-                  Shop
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/"
                   className="text-white no-underline hover:underline"
                 >
                   Home
                 </Link>
               </li>
+
+              <li>
+                <Link
+                  to="/shop"
+                  className="text-white no-underline hover:underline"
+                >
+                  Shop
+                </Link>
+              </li>
+
               <li>
                 <button
                   onClick={() => setOpenCart(!openCart)}
@@ -117,20 +119,22 @@ const MyNavbar: React.FC = () => {
           <ul className="flex flex-col space-y-4">
             <li>
               <Link
-                to="/shop"
-                className="text-white hover:bg-blue-gray-300 hover:p-1 hover:rounded-md"
-              >
-                Shop
-              </Link>
-            </li>
-            <li>
-              <Link
                 to="/"
                 className="text-white hover:bg-blue-gray-300 hover:p-1 hover:rounded-md"
               >
                 Home
               </Link>
             </li>
+
+            <li>
+              <Link
+                to="/shop"
+                className="text-white hover:bg-blue-gray-300 hover:p-1 hover:rounded-md"
+              >
+                Shop
+              </Link>
+            </li>
+
             <li>
               <button
                 onClick={() => setOpenCart(!openCart)}

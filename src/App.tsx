@@ -6,6 +6,7 @@ import MyNavbar from "./components/Navbar"; // Update import if necessary
 import Footer from "./components/Footer";
 import Shop from "./components/Shop";
 import ProductDetails from "./components/ProductDetails";
+import About from "./components/About";
 import { CartProvider } from "./components/CartContext";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<CarouselDefault />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/product/:productId" element={<ProductDetails />} />
+            <Route path="/about" element={<About />} />
           </Routes>
           <Footer />
         </HashRouter>
