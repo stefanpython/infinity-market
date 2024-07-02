@@ -24,6 +24,8 @@ interface CartContextType {
   cartItems: CartItem[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: number) => void;
+  updateCartQuantity: (productId: number, quantity: number) => void;
+  emptyCart: () => void;
   openCart: boolean;
   setOpenCart: React.Dispatch<React.SetStateAction<boolean>>;
   total: number;
@@ -73,6 +75,20 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const updateCartQuantity = (productId: number, quantity: number) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.product.id === productId
+          ? { ...item, quantity: Math.max(0, quantity) }
+          : item
+      )
+    );
+  };
+
+  const emptyCart = () => {
+    setCartItems([]);
+  };
+
   const total = cartItems.reduce(
     (acc, item) => acc + item.product.price * item.quantity,
     0
@@ -84,6 +100,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         cartItems,
         addToCart,
         removeFromCart,
+        updateCartQuantity,
+        emptyCart,
         openCart,
         setOpenCart,
         total,
