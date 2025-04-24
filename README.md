@@ -1,1 +1,1 @@
-Live demo ([HERE](https://stefanpython.github.io/infinity-market/#))[here]
+Live demo ([HERE](https://stefanpython.github.io/infinity-market/#))
